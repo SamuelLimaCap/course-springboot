@@ -1,9 +1,7 @@
 package com.samuellima.course.services;
 
 import com.samuellima.course.entities.Order;
-import com.samuellima.course.entities.User;
 import com.samuellima.course.repositories.OrderRepository;
-import com.samuellima.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
