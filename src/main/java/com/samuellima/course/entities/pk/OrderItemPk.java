@@ -1,13 +1,17 @@
 package com.samuellima.course.entities.pk;
 
 import com.samuellima.course.entities.Order;
+import com.samuellima.course.entities.OrderItem;
 import com.samuellima.course.entities.Product;
 
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 // \/ indica que é uma classe auxiliar
 @Embeddable
 public class OrderItemPk implements Serializable {
@@ -26,6 +30,7 @@ public class OrderItemPk implements Serializable {
     public Product getProduct() { return product; }
 
     public void setProduct(Product product) { this.product = product; }
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,19 +1,26 @@
 package com.samuellima.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.samuellima.course.entities.pk.OrderItemPk;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 @Table(name = "tb_order_item")
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    private OrderItemPk id;
+    private OrderItemPk id = new OrderItemPk();
     private Integer quantity;
     private Double price;
+
+    public OrderItem() {
+
+    }
 
     public OrderItem(Order order, Product product, Integer quantity, Double price) {
         id.setProduct(product);
@@ -22,11 +29,16 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder() { return id.getOrder(); }
+
     public void setOrder(Order order) { id.setOrder(order);}
 
+    @JsonIgnore
     public Product getProduct() { return id.getProduct(); }
+
     public void setProduct(Product product) { id.setProduct(product);}
+
     public Integer getQuantity() { return quantity; }
 
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
